@@ -35,8 +35,10 @@ module.exports.register = async (req, res) => {
     );
 
     res.cookie("refreshToken", refreshtoken, {
-      //   httpOnly: true,
-      maxAge: 10* 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      secure: true,
+      maxAge: 10 * 24 * 60 * 60 * 1000,
+      domain: 'https://candid-maamoul-6bde10.netlify.app'
       //   path: "/refresh_token",
     });
 
@@ -48,7 +50,11 @@ module.exports.register = async (req, res) => {
     // sendEmail(info);
     // return res.send({ error: "Verification mail Sent", verify: false });
 
-    res.send({ message: "Registered Successfully", user: update_user, accesstoken });
+    res.send({
+      message: "Registered Successfully",
+      user: update_user,
+      accesstoken,
+    });
   } catch (error) {
     res.send({ error: error.message });
   }
@@ -81,7 +87,7 @@ module.exports.login = async (req, res) => {
 
     res.cookie("refreshToken", refreshtoken, {
       //   httpOnly: true,
-      maxAge: 10* 24 * 60 * 60 * 1000,
+      maxAge: 10 * 24 * 60 * 60 * 1000,
       //   path: "/refresh_token",
     });
 
@@ -94,7 +100,7 @@ module.exports.login = async (req, res) => {
     //   sendEmail(info);
     //   return res.send({ error: "Verification mail Sent", verify: false });
     // }
-    if (user.isVerified==2) {
+    if (user.isVerified == 2) {
       res.send({
         accesstoken,
         user: update_user,

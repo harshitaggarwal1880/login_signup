@@ -44,7 +44,7 @@ const Signup = () => {
       console.log(name, email, password);
       try {
         const { data } = await axios.post(
-          registerRoute,
+          `${process.env.REACT_APP_HOST}/register`,
           {
             username: name,
             useremail: email,
