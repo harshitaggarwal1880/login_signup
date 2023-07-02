@@ -38,7 +38,7 @@ module.exports.register = async (req, res) => {
       httpOnly: true,
       secure: true,
       maxAge: 10 * 24 * 60 * 60 * 1000,
-      domain: 'https://candid-maamoul-6bde10.netlify.app'
+      // domain: 'https://candid-maamoul-6bde10.netlify.app'
       //   path: "/refresh_token",
     });
 
